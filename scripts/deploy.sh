@@ -10,15 +10,27 @@ if ! pgrep -f "linera-proxy" > /dev/null; then
     exit 1
 fi
 
+# Check if environment variables are set
+if [ -z "$LINERA_WALLET" ]; then
+    echo "❌ LINERA_WALLET not set!"
+    echo ""
+    echo "Run 'linera net up' and export the environment variables it provides:"
+    echo "  export LINERA_WALLET=..."
+    echo "  export LINERA_KEYSTORE=..."
+    echo "  export LINERA_STORAGE=..."
+    exit 1
+fi
+
 # Build the application
 echo "📦 Building application..."
 cd security-bounty
 cargo build --release --target wasm32-unknown-unknown
-cd ..
 
 # Publish and create application
 echo "🌐 Publishing to Linera network..."
 linera project publish-and-create
+
+cd ..
 
 echo ""
 echo "✅ Deployment complete!"

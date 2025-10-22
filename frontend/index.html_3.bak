@@ -14,7 +14,7 @@
         }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #8D96FF 0%, #A4ABFF 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -26,7 +26,7 @@
             background: white;
             padding: 40px 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(10, 31, 39, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-bottom: 30px;
             text-align: center;
         }
@@ -38,11 +38,11 @@
             margin-bottom: 15px;
         }
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
         }
         .header h1 {
-            background: linear-gradient(135deg, #8D96FF 0%, #0A1F27 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -52,25 +52,28 @@
             letter-spacing: -0.5px;
         }
         .header .tagline {
-            color: #1C3640;
+            color: #666;
             font-size: 1.05em;
             margin: 12px 0 20px 0;
             font-weight: 400;
         }
         .header .credits {
-            color: #1C3640;
+            color: #888;
             font-size: 0.95em;
             padding-top: 20px;
-            border-top: 2px solid #EDEDF9;
+            border-top: 2px solid #f0f0f0;
         }
         .header .credits a {
-            color: #8D96FF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
             font-weight: 700;
-            transition: color 0.3s;
+            transition: opacity 0.3s;
         }
         .header .credits a:hover {
-            color: #A4ABFF;
+            opacity: 0.8;
         }
         .social-links {
             display: flex;
@@ -80,12 +83,12 @@
             margin-top: 12px;
         }
         .social-links a {
-            color: #8D96FF;
+            color: #667eea;
             text-decoration: none;
             font-weight: 600;
             padding: 10px 18px;
             border-radius: 8px;
-            background: #EDEDF9;
+            background: #f8f9fa;
             transition: all 0.3s;
             display: flex;
             align-items: center;
@@ -93,13 +96,13 @@
             font-size: 0.9em;
         }
         .social-links a:hover {
-            background: #8D96FF;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(141, 150, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
         .error {
-            background: #DE2A02;
+            background: #ff6b6b;
             color: white;
             padding: 15px;
             border-radius: 10px;
@@ -118,11 +121,11 @@
             background: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(10, 31, 39, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-bottom: 30px;
         }
         .card h2 {
-            color: #0A1F27;
+            color: #333;
             margin-bottom: 20px;
             font-size: 1.7em;
             font-weight: 700;
@@ -133,7 +136,7 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #0A1F27;
+            color: #333;
             font-weight: 600;
             font-size: 0.95em;
         }
@@ -142,7 +145,7 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #DBDCE8;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
             font-family: 'Inter', sans-serif;
@@ -152,14 +155,14 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #8D96FF;
+            border-color: #667eea;
         }
         .form-group textarea {
             min-height: 100px;
             resize: vertical;
         }
         .btn {
-            background: linear-gradient(135deg, #8D96FF 0%, #A4ABFF 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 12px 30px;
             border: none;
@@ -172,29 +175,29 @@
         }
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(141, 150, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
         .bounty-list, .submission-list {
             display: grid;
             gap: 20px;
         }
         .bounty-item, .submission-item {
-            background: #EDEDF9;
+            background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #8D96FF;
+            border-left: 4px solid #667eea;
             transition: transform 0.2s;
         }
         .bounty-item:hover, .submission-item:hover {
             transform: translateX(5px);
         }
         .bounty-item h3, .submission-item h3 {
-            color: #0A1F27;
+            color: #333;
             margin-bottom: 10px;
             font-weight: 700;
         }
         .bounty-item p, .submission-item p {
-            color: #1C3640;
+            color: #666;
             margin-bottom: 5px;
         }
         .badge {
@@ -208,72 +211,29 @@
             letter-spacing: 0.5px;
         }
         .badge-low { background: #51cf66; color: white; }
-        .badge-medium { background: #ffd43b; color: #0A1F27; }
-        .badge-high { background: #F35F3F; color: white; }
-        .badge-critical { background: #DE2A02; color: white; }
-        .badge-pending { background: #C8CBD6; color: #0A1F27; }
+        .badge-medium { background: #ffd43b; color: #333; }
+        .badge-high { background: #ff8787; color: white; }
+        .badge-critical { background: #ff6b6b; color: white; }
+        .badge-pending { background: #868e96; color: white; }
         .badge-approved { background: #51cf66; color: white; }
-        .badge-rejected { background: #DE2A02; color: white; }
-        
-        .footer {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(10, 31, 39, 0.1);
-            margin-top: 30px;
-            text-align: center;
-        }
-        .linera-links {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .linera-links a {
-            color: #8D96FF;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px 18px;
-            border-radius: 8px;
-            background: #EDEDF9;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.9em;
-        }
-        .linera-links a:hover {
-            background: #8D96FF;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(141, 150, 255, 0.3);
-        }
-        .footer-bottom {
-            padding-top: 20px;
-            border-top: 2px solid #EDEDF9;
-            color: #1C3640;
-            font-size: 0.9em;
-        }
-        .footer-bottom p {
-            margin: 5px 0;
-        }
-        .footer-bottom a {
-            color: #8D96FF;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .footer-bottom a:hover {
-            text-decoration: underline;
-        }
+        .badge-rejected { background: #ff6b6b; color: white; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="header-top">
-                <img src="linera_icon.png" alt="Linera" class="logo-icon">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="48" fill="url(#grad1)" opacity="0.1"/>
+                    <path d="M 30 40 L 50 25 L 70 40 L 70 60 L 50 75 L 30 60 Z" fill="url(#grad1)"/>
+                    <path d="M 40 45 L 50 38 L 60 45 L 60 55 L 50 62 L 40 55 Z" fill="white"/>
+                </svg>
                 <h1>Linera Security Bounty Platform</h1>
             </div>
             <p class="tagline">Real-time smart contract audit bounty platform on Linera microchains</p>
@@ -370,34 +330,6 @@
             <h2>Vulnerability Submissions</h2>
             <div id="submissionList" class="submission-list">Loading...</div>
         </div>
-
-        <div class="footer">
-            <div class="linera-links">
-                <p style="margin-bottom: 12px; color: #1C3640; font-weight: 600;">Linera Protocol:</p>
-                <a href="https://linera.io" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                    </svg>
-                    Website
-                </a>
-                <a href="https://github.com/linera-io" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                    </svg>
-                    GitHub
-                </a>
-                <a href="https://x.com/linera_io" target="_blank">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                    Twitter
-                </a>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 <a href="https://github.com/papadritta" target="_blank">@papadritta</a> | Licensed under MIT</p>
-                <p>Built with ❤️ on Linera Protocol</p>
-            </div>
-        </div>
     </div>
 
     <script>
@@ -450,7 +382,7 @@
             const bountyList = document.getElementById('bountyList');
             
             if (!data.bounties || data.bounties.length === 0) {
-                bountyList.innerHTML = '<p style="color: #1C3640;">No bounties yet. Create one above!</p>';
+                bountyList.innerHTML = '<p style="color: #666;">No bounties yet. Create one above!</p>';
                 return;
             }
 
@@ -484,7 +416,7 @@
             const submissionList = document.getElementById('submissionList');
             
             if (!data.submissions || data.submissions.length === 0) {
-                submissionList.innerHTML = '<p style="color: #1C3640;">No submissions yet. Submit a vulnerability above!</p>';
+                submissionList.innerHTML = '<p style="color: #666;">No submissions yet. Submit a vulnerability above!</p>';
                 return;
             }
 
