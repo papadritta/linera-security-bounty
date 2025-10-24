@@ -143,8 +143,8 @@ make check-env
 # Build and deploy:
 make build
 make test
-make deploy # Your app ID: 15dfa174fe0b1d824f855e96edfc26165c47f493deba15a72adc1ce1864d91b3
-linera wallet show # Chain ID: 290abb2c4e719b4eff20f19414ef6305d5eea70075177fdd78b06bb6124a7b4e
+make deploy
+
 # Start GraphQL service (keep running):
 make serve
 ```
