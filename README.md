@@ -1,4 +1,5 @@
 # 🔒 Linera Security Bounty Platform
+<img width="1128" height="191" alt="OG_github" src="https://github.com/user-attachments/assets/78585cde-4bb1-4194-8221-071d4485648a" />
 
 [![Linera Buildathon](https://img.shields.io/badge/Linera-Buildathon%20Wave%201-blue)](https://linera.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -389,5 +390,9 @@ MIT License - see [LICENSE](LICENSE) file
 - Discussions: [GitHub Discussions](https://github.com/papadritta/linera-security-bounty/discussions)
 
 ---
-
 **Built with ❤️ for Linera Buildathon Wave 1**
+
+<img width="1128" height="191" alt="OG_github-2" src="https://github.com/user-attachments/assets/2b17ad32-9414-45fb-8407-2b47c5c65609" />
+
+
+
