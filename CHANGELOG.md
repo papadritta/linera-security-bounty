@@ -68,11 +68,30 @@ All notable changes to Linera Security Bounty Platform.
 - **Test Coverage** - All critical paths tested
 - **Professional Docs** - Production-ready documentation
 
-### 🔮 Next Steps (Wave 2)
-- TEE oracle for automated PoC verification
-- Multi-token reward support
-- Researcher reputation system
-- Dispute resolution mechanism
+### Current version (Wave 1):
+- ✅ **Bounty creation with reward pools**
+- ✅ **Vulnerability submission system**
+- ✅ **Manual verification workflow**
+- ✅ **Payout claiming mechanism**
+- ✅ **GraphQL API with full CRUD**
+- ✅ **Web-based frontend interface**
+- ✅ **Real-time updates via Linera microchains**
+
+### Next Iteration (Wave 2):
+- 🔄 **Enhanced UI/UX** - Better filtering, search, and dashboards
+- 🔄 **Notification System** - Webhook integration for status updates
+- 🔄 **Submission Analytics** - Stats and reporting dashboard
+- 🔄 **Public Testnet Deployment** - Wider community testing
+
+### Way to grow (Future Enhancements):
+- 💭 **Reputation System** - Track researcher credibility and history
+- 💭 **Multi-token Support** - ERC-20 and custom token rewards
+- 💭 **Dispute Resolution** - Community-driven arbitration
+- 💭 **Private Programs** - Confidential vulnerability disclosure
+- 💭 **TEE Oracle Integration** - Automated PoC verification
+- 💭 **Multi-chain Support** - Cross-chain bounty programs
+- 💭 **AI Classification** - ML-assisted severity scoring
+- 💭 **DAO Governance** - Decentralized platform rules
 
 ---
 

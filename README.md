@@ -10,11 +10,19 @@
 
 Submit vulnerabilities, verify findings, and claim rewards - all with instant finality powered by Linera's microchain architecture.
 
-![Platform Demo](docs/screenshots/platform-overview.png)
+
+#####################################################
+!!!!!! Add Demo-video for interraction
+#####################################################
+
 
 ---
 
 ## Problem & Solution
+
+#####################################################
+!!!!!! Add link to discrambler in Docs with more info
+#####################################################
 
 **Problem:** Traditional bug bounty platforms are centralized, slow, and opaque. Researchers wait weeks for payouts, disputes lack transparency, and platforms take high fees.
 
@@ -117,6 +125,10 @@ cargo install linera-service --git https://github.com/linera-io/linera-protocol.
 
 # Add WASM support
 rustup target add wasm32-unknown-unknown
+
+# Clone repository
+git clone https://github.com/papadritta/linera-security-bounty.git
+cd linera-security-bounty
 ```
 
 #### Running It
@@ -129,10 +141,6 @@ make network-up
 ```
 #### Terminal 2 (Build & Deploy):
 ```bash
-# Clone repository
-git clone https://github.com/papadritta/linera-security-bounty.git
-cd linera-security-bounty
-
 # Paste the 3 export commands here:
 export LINERA_WALLET=/tmp/.tmpXXX/wallet.json
 export LINERA_KEYSTORE=/tmp/.tmpXXX/keystore
@@ -157,7 +165,7 @@ make frontend
 
 ---
 
-## 📖 Usage Examples
+## Usage Examples (GraphQL)
 > Once it's running, you can interact with it via GraphQL at http://localhost:8080
 
 ### Create Bounty Program
@@ -200,8 +208,25 @@ mutation {
   claimPayout(submissionId: 1)
 }
 ```
+> Then 
 
 ---
+
+## Usage Examples (UI dashboard)
+> Once it's running, you can interact with it via UI dashboard at open your browser: http://localhost:3000
+
+#####################################################
+!!!!!! Add Screenshots with examples
+#####################################################
+---
+
+## Usage Examples (CLI)
+> Once it's running, you can interact with it via CLI in you terminal
+
+#####################################################
+!!!!!! Add conmmands for interraction
+#####################################################
+
 
 ## Development Workflow
 ```bash
@@ -243,7 +268,7 @@ make check-all
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 ```
 linera-security-bounty/
 ├── security-bounty/           # Linera application
@@ -350,7 +375,7 @@ make build
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is a buildathon submission. For production deployments:
 
@@ -362,13 +387,13 @@ This is a buildathon submission. For production deployments:
 
 ---
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) file
 
 ---
 
-## 👤 Author
+## Author
 
 **papadritta**
 - GitHub: [@papadritta](https://github.com/papadritta)
@@ -376,7 +401,7 @@ MIT License - see [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Linera Team** - For the incredible microchain architecture
 - **Rust Community** - For the best development tools
@@ -384,7 +409,7 @@ MIT License - see [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
+## Support
 
 - Issues: [GitHub Issues](https://github.com/papadritta/linera-security-bounty/issues)
 - Discussions: [GitHub Discussions](https://github.com/papadritta/linera-security-bounty/discussions)
