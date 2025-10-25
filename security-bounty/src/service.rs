@@ -4,18 +4,18 @@ mod state;
 
 use std::sync::Arc;
 
-use async_graphql::{EmptySubscription, Object, Schema};
+use async_graphql::{EmptySubscription, Request, Response, Schema};
 use linera_sdk::{
-    graphql::GraphQLMutationRoot, linera_base_types::WithServiceAbi, views::View, Service,
+    graphql::GraphQLMutationRoot as _, linera_base_types::WithServiceAbi, views::View, Service,
     ServiceRuntime,
 };
 
-use security_bounty::{Bounty, Operation, Submission};
+use security_bounty::Operation;
 
 use self::state::SecurityBountyState;
 
 pub struct SecurityBountyService {
-    state: SecurityBountyState,
+    state: Arc<SecurityBountyState>,
     runtime: Arc<ServiceRuntime<Self>>,
 }
 
@@ -33,76 +33,18 @@ impl Service for SecurityBountyService {
             .await
             .expect("Failed to load state");
         SecurityBountyService {
-            state,
+            state: Arc::new(state),
             runtime: Arc::new(runtime),
         }
     }
 
-    async fn handle_query(&self, query: Self::Query) -> Self::QueryResponse {
-        let bounty_count = *self.state.bounty_counter.get();
-        let submission_count = *self.state.submission_counter.get();
-
-        let mut bounties = Vec::new();
-        for id in 0..bounty_count {
-            if let Some(bounty) = self.state.bounties.get(&id).await.expect("Failed to read") {
-                bounties.push(bounty);
-            }
-        }
-
-        let mut submissions = Vec::new();
-        for id in 0..submission_count {
-            if let Some(submission) = self
-                .state
-                .submissions
-                .get(&id)
-                .await
-                .expect("Failed to read")
-            {
-                submissions.push(submission);
-            }
-        }
-
-        Schema::build(
-            QueryRoot {
-                bounties,
-                submissions,
-            },
+    async fn handle_query(&self, request: Request) -> Response {
+        let schema = Schema::build(
+            self.state.clone(),
             Operation::mutation_root(self.runtime.clone()),
             EmptySubscription,
         )
-        .finish()
-        .execute(query)
-        .await
-    }
-}
-
-struct QueryRoot {
-    bounties: Vec<Bounty>,
-    submissions: Vec<Submission>,
-}
-
-#[Object]
-impl QueryRoot {
-    async fn bounties(&self) -> &Vec<Bounty> {
-        &self.bounties
-    }
-
-    async fn submissions(&self) -> &Vec<Submission> {
-        &self.submissions
-    }
-
-    async fn bounty(&self, id: u64) -> Option<&Bounty> {
-        self.bounties.iter().find(|b| b.id == id)
-    }
-
-    async fn submission(&self, id: u64) -> Option<&Submission> {
-        self.submissions.iter().find(|s| s.id == id)
-    }
-
-    async fn bounty_submissions(&self, bounty_id: u64) -> Vec<&Submission> {
-        self.submissions
-            .iter()
-            .filter(|s| s.bounty_id == bounty_id)
-            .collect()
+        .finish();
+        schema.execute(request).await
     }
 }
