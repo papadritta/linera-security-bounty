@@ -2,69 +2,57 @@
 set -e
 
 echo "════════════════════════════════════════════════════════════"
-echo "  Deploying Linera Security Bounty Platform"
+echo " Deploying Linera Security Bounty Platform"
 echo "════════════════════════════════════════════════════════════"
 echo ""
 
 # Check if Linera network is running
 if ! pgrep -f "linera-proxy" > /dev/null; then
-    echo "Oops! The network isn't running."
-    echo ""
-    echo "Start it first:"
-    echo "  make network-up"
-    echo ""
-    echo "Then export the variables and try again."
+    echo "Network is not running."
+    echo "Start it first: make network-up"
     exit 1
 fi
 
 # Check if environment variables are set
 if [ -z "$LINERA_WALLET" ]; then
-    echo "════════════════════════════════════════════════════════════"
-    echo "Wait! Environment variables aren't set."
-    echo "════════════════════════════════════════════════════════════"
-    echo ""
-    echo "Did you run 'make network-up'?"
-    echo ""
-    echo "After that command, you should see 3 export commands like:"
-    echo "  export LINERA_WALLET=/tmp/.tmpXXX/wallet.json"
-    echo "  export LINERA_KEYSTORE=/tmp/.tmpXXX/keystore"
-    echo "  export LINERA_STORAGE=rocksdb:/tmp/.tmpXXX/storage"
-    echo ""
-    echo "Copy those EXACT lines and paste them in this terminal."
-    echo "Then run 'make deploy' again."
-    echo ""
+    echo "Environment variables are not set."
+    echo "Run 'make network-up' and copy the export commands."
     exit 1
 fi
 
-echo "Network is running ✓"
-echo "Environment is configured ✓"
+echo "Network is running"
+echo "Environment is configured"
 echo ""
 
 # Build the application
 echo "Building the app..."
 cd security-bounty
 cargo build --release --target wasm32-unknown-unknown
-echo "Build complete ✓"
+echo "Build complete"
 echo ""
 
 # Publish and create application
 echo "Publishing to network..."
-APP_ID=$(linera project publish-and-create)
+APP_OUTPUT=$(linera project publish-and-create 2>&1)
+APP_ID=$(echo "$APP_OUTPUT" | grep -E '^[a-f0-9]{64}$' | head -1)
+echo "$APP_OUTPUT"
 cd ..
 
+# Update frontend automatically
 echo ""
-echo "════════════════════════════════════════════════════════════"
-echo "  Deployment complete!"
-echo "════════════════════════════════════════════════════════════"
+echo "Updating frontend endpoint..."
+CHAIN_ID=$(linera wallet show | grep "Admin Chain" -A 1 | grep "Chain ID" | awk '{print $3}')
+sed -i '' "s|chains/[^/]*/applications/[^']*|chains/${CHAIN_ID}/applications/${APP_ID}|g" frontend/index.html
+echo "Frontend updated"
+echo "Chain: ${CHAIN_ID}"
+echo "App: ${APP_ID}"
 echo ""
-echo "Your app ID: $APP_ID"
+
+echo "════════════════════════════════════════════════════════════"
+echo " Deployment complete"
+echo "════════════════════════════════════════════════════════════"
 echo ""
 echo "Next steps:"
-echo "  1. Start GraphQL (in one terminal):"
-echo "     make serve"
-echo ""
-echo "  2. Start frontend (in another terminal):"
-echo "     make frontend"
-echo ""
-echo "  3. Open your browser:"
-echo "     http://localhost:3000"
+echo " Terminal 1: make serve"
+echo " Terminal 2: make frontend"
+echo " Browser: http://localhost:3000"

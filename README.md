@@ -1,4 +1,5 @@
-# 🔒 Linera Security Bounty Platform
+# Linera Security Bounty Platform
+> A next-generation decentralized bug bounty platform built for instant trust and transparency.
 <img width="1128" height="191" alt="OG_github" src="https://github.com/user-attachments/assets/78585cde-4bb1-4194-8221-071d4485648a" />
 
 [![Linera Buildathon](https://img.shields.io/badge/Linera-Buildathon%20Wave%201-blue)](https://linera.io)
@@ -6,31 +7,65 @@
 [![Rust](https://img.shields.io/badge/rust-1.85%2B-orange.svg)](https://www.rust-lang.org)
 [![Linera SDK](https://img.shields.io/badge/Linera%20SDK-0.16.0-green)](https://github.com/linera-io/linera-protocol)
 
-**Real-time decentralized bug bounty platform on Linera microchains**
+---
+> **Why Linera?** Microchains give isolated state, instant finality, and predictable execution—ideal for real-time bounty flows.
 
-Submit vulnerabilities, verify findings, and claim rewards - all with instant finality powered by Linera's microchain architecture.
 
+## TL;DR — Why it matters
 
-#####################################################
-!!!!!! Add Demo-video for interraction
-#####################################################
+**Linera Security Bounty** connects developers and security researchers directly — no waiting, no middlemen, no trust issues.
 
+- **Instant finality:** vulnerabilities confirmed in milliseconds  
+- **Real-time collaboration:** projects and researchers see updates instantly  
+- **No platform fees (Wave 1):** direct researcher-to-project payouts  
+- **Built on Linera microchains:** scalable, efficient, and secure  
+
+In 2025, cyberattacks move fast — this platform helps you react faster.
+
+---
+
+## Documentation
+See the [Project Overview](./docs/PROJECT_OVERVIEW.md) for a detailed description of the platform’s purpose, architecture, and long-term vision — intended for collaborators, contributors, and potential partners.
+
+<!-- TODO: add demo video URL -->
+[▶️ Demo video](#) *(coming soon)*
+
+---
+
+## Contents
+- [TL;DR — Why it matters](#tldr--why-it-matters)
+- [Documentation](#documentation)
+- [Problem & Solution](#problem--solution)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [On-chain data structures](#on-chain-data-structures)
+- [Getting Started](#getting-started)
+- [Running it](#running-it)
+- [Usage examples](#usage-examples)
+- [Development Workflow](#development-workflow)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Troubleshooting](#troubleshooting)
+- [What’s next — Roadmap](#whats-next--roadmap)
+- [Security Notes](#security-notes)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
+- [Support](#support)
 
 ---
 
 ## Problem & Solution
+> Security moves in milliseconds — bounty verification shouldn’t take weeks.
 
-#####################################################
-!!!!!! Add link to discrambler in Docs with more info
-#####################################################
+**Problem.** Today’s bounty platforms are centralized, slow, and opaque: weeks-long payouts, opaque queues, and high fees.
 
-**Problem:** Traditional bug bounty platforms are centralized, slow, and opaque. Researchers wait weeks for payouts, disputes lack transparency, and platforms take high fees.
-
-**Solution:** Decentralized bounty platform leveraging Linera's instant finality:
-- **Instant verification** - No waiting for block confirmations
-- **Trustless escrow** - Smart contract holds rewards
-- **Full transparency** - All submissions on-chain
-- **Zero platform fees** - Direct researcher-to-project payments
+**Solution.** A decentralized bounty protocol on Linera with instant finality and transparent state:
+- **Instant verification:** no waiting for block confirmations
+- **Trustless escrow:** smart contract holds rewards
+- **Full transparency:** all submissions on-chain
+- **Zero platform fees (Wave 1):** direct researcher-to-project payments
 
 ---
 
@@ -49,49 +84,51 @@ Submit vulnerabilities, verify findings, and claim rewards - all with instant fi
 - Close/pause programs anytime
 
 ### Technical Highlights
-- **Linera Microchains** - Each bounty program can run on isolated chain
-- **GraphQL API** - Rich query and mutation interface
-- **WASM Compilation** - Secure, deterministic execution
-- **Real-time Updates** - Instant state synchronization
+- **Linera microchains:** each bounty program runs on an isolated microchain  
+- **GraphQL API:** rich query and mutation interface  
+- **WASM compilation:** secure, deterministic execution  
+- **Real-time updates:** instant state synchronization
 
 ---
 
 ## Architecture
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Frontend (HTML/JS)                    │
-│                 GraphQL Client Interface                 │
+│                    Frontend (HTML/JS)                   │
+│                 GraphQL client interface                │
 └─────────────────────┬───────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────┐
-│              Linera GraphQL Service (Port 8080)          │
+│             Linera GraphQL service (port 8080)          │
 │  ┌────────────────────────────────────────────────────┐ │
-│  │  Queries: bounties, submissions, bountyById        │ │
-│  │  Mutations: createBounty, submitVulnerability,     │ │
+│  │  queries: bounties, submissions, bountyById        │ │
+│  │  mutations: createBounty, submitVulnerability,     │ │
 │  │             verifySubmission, claimPayout          │ │
 │  └────────────────────────────────────────────────────┘ │
 └─────────────────────┬───────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────┐
-│              Smart Contract (WASM)                       │
+│                  smart contract (wasm)                  │
 │  ┌────────────────────────────────────────────────────┐ │
-│  │  State Management:                                 │ │
-│  │  - MapView<u64, Bounty>                           │ │
-│  │  - MapView<u64, Submission>                       │ │
-│  │  - Counters, ownership checks                     │ │
+│  │  state management:                                 │ │
+│  │  - MapView<u64, Bounty>                            │ │
+│  │  - MapView<u64, Submission>                        │ │
+│  │  - counters, ownership checks                      │ │
 │  └────────────────────────────────────────────────────┘ │
 └─────────────────────┬───────────────────────────────────┘
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────┐
-│                  Linera Microchains                      │
-│         (Instant finality, <1s block times)              │
+│                  Linera microchains                     │
+│                  (instant finality)                     │
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Data Models
+---
+
+## On-chain data structures
 
 **Bounty:**
 - `id`: Unique identifier
@@ -110,6 +147,8 @@ Submit vulnerabilities, verify findings, and claim rewards - all with instant fi
 - `researcher`: Submitter address
 - `payout_amount`: Reward if approved
 - `paid`: Payout status
+
+See [`state.rs`](./security-bounty/src/state.rs) for storage layout and [`service.rs`](./security-bounty/src/service.rs) for the GraphQL schema.
 
 ---
 
@@ -131,22 +170,24 @@ git clone https://github.com/papadritta/linera-security-bounty.git
 cd linera-security-bounty
 ```
 
-#### Running It
->The correct workflow uses 3 terminals:
-#### Terminal 1 (Network - Keep Running):
+### Running it
+> The workflow uses three terminals running in parallel. 
+> Each terminal performs a separate role: network, deployment, and frontend.
+
+#### Terminal 1 — network (keep running)
 ```bash
 make network-up
-# This will show 3 export commands - copy them
-# Keep this terminal running (don't close it!)
+# This will show 3 export commands — copy them
+# Keep this terminal running (don’t close it!)
 ```
-#### Terminal 2 (Build & Deploy):
+#### Terminal 2 — build & deploy
 ```bash
 # Paste the 3 export commands here:
 export LINERA_WALLET=/tmp/.tmpXXX/wallet.json
 export LINERA_KEYSTORE=/tmp/.tmpXXX/keystore
 export LINERA_STORAGE=rocksdb:/tmp/.tmpXXX/storage
 
-# Verify they're set:
+# Verify they’re set:
 make check-env
 
 # Build and deploy:
@@ -157,18 +198,34 @@ make deploy
 # Start GraphQL service (keep running):
 make serve
 ```
-#### Terminal 3 (Frontend):
+#### Terminal 3 — frontend
 ```bash
 make frontend
 ```
-> Then open your browser: http://localhost:3000
 
 ---
 
-## Usage Examples (GraphQL)
-> Once it's running, you can interact with it via GraphQL at http://localhost:8080
+## Usage examples
 
-### Create Bounty Program
+After `make serve` and `make frontend`:
+
+> Services: GraphQL at **http://localhost:8080**, Web UI at **http://localhost:3000**.
+
+### UI
+Browse to **http://localhost:3000** to create bounties, submit findings, and verify/claim.
+
+<!-- TODO: add screenshots to ./docs/screenshots and link here -->
+[🖼️ Screenshots](#) *(coming soon)*
+
+### CLI
+Use CLI in terminal to create bounties, submit findings, and verify/claim.
+
+<!-- TODO: add concrete CLI commands -->
+*(Coming soon — CLI code scopes for create/submit/verify/claim)*
+
+### GraphQL
+
+**Create Bounty**
 ```graphql
 mutation {
   createBounty(
@@ -190,8 +247,7 @@ mutation {
   )
 }
 ```
-
-### Verify a Submission (Program Owner)
+### Verify Submission
 ```graphql
 mutation {
   verifySubmission(
@@ -201,32 +257,14 @@ mutation {
   )
 }
 ```
-
 ### Claim Your Reward
 ```graphql
 mutation {
   claimPayout(submissionId: 1)
 }
 ```
-> Then 
 
 ---
-
-## Usage Examples (UI dashboard)
-> Once it's running, you can interact with it via UI dashboard at open your browser: http://localhost:3000
-
-#####################################################
-!!!!!! Add Screenshots with examples
-#####################################################
----
-
-## Usage Examples (CLI)
-> Once it's running, you can interact with it via CLI in you terminal
-
-#####################################################
-!!!!!! Add conmmands for interraction
-#####################################################
-
 
 ## Development Workflow
 ```bash
@@ -245,6 +283,8 @@ make build
 make deploy
 ```
 
+---
+
 ## Testing
 ```bash
 # Run all tests
@@ -260,7 +300,7 @@ make format
 make check-all
 ```
 
-**Test Coverage:**
+**Test scope:**
 - Contract operations (create, submit, verify, claim)
 - State persistence and queries
 - Access control and ownership checks
@@ -281,26 +321,32 @@ linera-security-bounty/
 │   └── rust-toolchain.toml
 ├── frontend/                  # Web interface
 │   └── index.html
-│   └── linera_icon.png
+│   └── linera_logo.svg
 ├── scripts/                   # Build automation
 │   ├── deploy.sh
 ├── docs/                      # Documentation
-│   └── screenshots/
+│   ├── PROJECT_OVERVIEW.md                      
+│   ├── screenshots/
+│   ├── CHANGELOG.md
+│   ├── SECURITY.md
+│   └── Tests.md  
 ├── Makefile                   # Build commands
 ├── README.md
-├── CHANGELOG.md
 └── LICENSE
 ```
+
+---
+
 ## Troubleshooting
 
-#### Network won't start?
+### Network won't start?
 ```bash
 make network-status  # Check what's wrong
 make network-down    # Stop any stuck processes
 make network-up      # Try again
 ```
 
-#### Forgot to export variables?
+### Forgot to export variables?
 > After make network-up, look for output like this:
 ```bash
 export LINERA_WALLET=/tmp/.tmpXXX/wallet.json
@@ -309,13 +355,13 @@ export LINERA_STORAGE=rocksdb:/tmp/.tmpXXX/storage
 ```
 Copy ALL THREE lines exactly as shown and paste them in your terminal.
 
-#### Check if they're set:
+### Check if they're set:
 ```bash
 make check-env
 ```
 If you see "All set!", you're good to go!
 
-#### Port already in use?
+### Port already in use?
 ```bash
 # Kill whatever's using port 8080
 lsof -ti:8080 | xargs kill -9
@@ -323,14 +369,14 @@ lsof -ti:8080 | xargs kill -9
 # Kill whatever's using port 3000
 lsof -ti:3000 | xargs kill -9
 ```
-#### Build errors?
+### Build errors?
 ```bash
 make clean
 make build
 ```
 ---
 
-## What's Next? - Roadmap:
+## What’s next — Roadmap
 
 ### Current version (Wave 1):
 - ✅ **Bounty creation with reward pools**
@@ -341,25 +387,27 @@ make build
 - ✅ **Web-based frontend interface**
 - ✅ **Real-time updates via Linera microchains**
 
-### Next Iteration (Wave 2):
-- 🔄 **Enhanced UI/UX** - Better filtering, search, and dashboards
-- 🔄 **Notification System** - Webhook integration for status updates
-- 🔄 **Submission Analytics** - Stats and reporting dashboard
-- 🔄 **Public Testnet Deployment** - Wider community testing
+### Next iteration (Wave 2):
+- 🔄 **Enhanced UI/UX:** better filtering, search, and dashboards
+- 🔄 **Notification system:** webhook integration for status updates
+- 🔄 **Submission analytics:** stats and reporting dashboard
+- 🔄 **Public testnet deployment:** wider community testing
 
-### Way to grow (Future Enhancements):
-- 💭 **Reputation System** - Track researcher credibility and history
-- 💭 **Multi-token Support** - ERC-20 and custom token rewards
-- 💭 **Dispute Resolution** - Community-driven arbitration
-- 💭 **Private Programs** - Confidential vulnerability disclosure
-- 💭 **TEE Oracle Integration** - Automated PoC verification
-- 💭 **Multi-chain Support** - Cross-chain bounty programs
-- 💭 **AI Classification** - ML-assisted severity scoring
-- 💭 **DAO Governance** - Decentralized platform rules
+### Future enhancements:
+- 💭 **Reputation System:** Track researcher credibility and history
+- 💭 **Multi-token Support:** ERC-20 and custom token rewards
+- 💭 **Dispute Resolution:** Community-driven arbitration
+- 💭 **Private Programs:** Confidential vulnerability disclosure
+- 💭 **TEE Oracle Integration:** Automated PoC verification
+- 💭 **Multi-chain Support:** Cross-chain bounty programs
+- 💭 **AI Classification:** ML-assisted severity scoring
+- 💭 **DAO Governance:** Decentralized platform rules
 
 ---
 
 ## Security Notes
+
+**Responsible disclosure:** See our [Security Policy](./docs/SECURITY.md) or report via [GitHub Security Advisories](../../security/advisories/new). We will acknowledge, triage, and coordinate fixes before public disclosure.
 
 **Current Implementation:**
 - Access control on all state mutations
@@ -389,7 +437,7 @@ This is a buildathon submission. For production deployments:
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file
+MIT License © 2025 - see [LICENSE](LICENSE)
 
 ---
 
@@ -403,9 +451,9 @@ MIT License - see [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- **Linera Team** - For the incredible microchain architecture
-- **Rust Community** - For the best development tools
-- **Bug Bounty Hunters** - For inspiring this platform
+- **Linera Team:** For the incredible microchain architecture
+- **Rust Community:** For the best development tools
+- **Bug Bounty Hunters:** For inspiring this platform
 
 ---
 
@@ -418,6 +466,3 @@ MIT License - see [LICENSE](LICENSE) file
 **Built with ❤️ for Linera Buildathon Wave 1**
 
 <img width="1128" height="191" alt="OG_github-2" src="https://github.com/user-attachments/assets/2b17ad32-9414-45fb-8407-2b47c5c65609" />
-
-
-
