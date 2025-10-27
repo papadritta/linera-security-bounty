@@ -27,8 +27,7 @@ In 2025, cyberattacks move fast — this platform helps you react faster.
 ## Documentation
 See the [Project Overview](./docs/PROJECT_OVERVIEW.md) for a detailed description of the platform’s purpose, architecture, and long-term vision — intended for collaborators, contributors, and potential partners.
 
-<!-- TODO: add demo video URL -->
-[▶️ Demo video](#) *(coming soon)*
+[▶️ Demo video](https://youtu.be/ytXKSmfHEsM)
 
 ---
 
