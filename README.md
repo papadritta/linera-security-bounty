@@ -210,58 +210,44 @@ After `make serve` and `make frontend`:
 
 > Services: GraphQL at **http://localhost:8080**, Web UI at **http://localhost:3000**.
 
-### UI
-Browse to **http://localhost:3000** to create bounties, submit findings, and verify/claim.
+For complete testing workflows and detailed examples, see **[Tests.md](./docs/Tests.md)** which covers:
 
-<!-- TODO: add screenshots to ./docs/screenshots and link here -->
-[🖼️ Screenshots](#) *(coming soon)*
+- **UI Testing** - Step-by-step browser-based testing
+- **CLI Testing** - Command-line interface testing  
+- **GraphQL Testing** - Direct API testing via GraphiQL
+- **3 Complete Test Scenarios** - Critical approved, medium rejected, high-value payout
 
-### CLI
-Use CLI in terminal to create bounties, submit findings, and verify/claim.
+### Quick Start Examples
 
-<!-- TODO: add concrete CLI commands -->
-*(Coming soon — CLI code scopes for create/submit/verify/claim)*
+**UI:** Browse to **http://localhost:3000** to create bounties, submit findings, and verify/claim.
 
-### GraphQL
+**CLI:** Use `linera query-application` to interact with the platform:
+```bash
+# List all bounties
+linera query-application \
+  --chain-id $CHAIN_ID \
+  --application-id $APP_ID \
+  'query { bounties { id contractAddress rewardPool } }'
+```
 
-**Create Bounty**
+**GraphQL:** Open the application-specific GraphQL IDE:
+```
+http://localhost:8080/chains/{CHAIN_ID}/applications/{APP_ID}
+```
+
+**Example mutation:**
 ```graphql
 mutation {
   createBounty(
     contractAddress: "0x1234...",
-    rewardPool: "10000000000",
-    minSeverity: "MEDIUM"
+    rewardPool: 10000000000,
+    minSeverity: MEDIUM
   )
 }
 ```
-### Submit Vulnerability
-```graphql
-mutation {
-  submitVulnerability(
-    bountyId: 1,
-    title: "Integer Overflow in Transfer",
-    description: "Unchecked arithmetic...",
-    severity: "HIGH",
-    proofOfConcept: "Steps to reproduce..."
-  )
-}
-```
-### Verify Submission
-```graphql
-mutation {
-  verifySubmission(
-    submissionId: 1,
-    approved: true,
-    payoutAmount: "5000000000"
-  )
-}
-```
-### Claim Your Reward
-```graphql
-mutation {
-  claimPayout(submissionId: 1)
-}
-```
+---
+
+**[View complete testing guide](./docs/Tests.md)**
 
 ---
 
