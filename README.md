@@ -20,6 +20,18 @@
 - **No platform fees (Wave 1):** direct researcher-to-project payouts  
 - **Built on Linera microchains:** scalable, efficient, and secure  
 
+## How We Stack Up
+
+| Feature | HackerOne/Immunefi | Linera Security Bounty |
+|---------|-------------------|------------------------|
+| **Payout Time** | 21-45 days | < 1 second |
+| **Platform Fees** | 20-30% | 0% (Wave 1) |
+| **Transparency** | Opaque queue | Full on-chain |
+| **Proof of Work** | Off-chain records | Immutable on-chain |
+| **Congestion** | Single platform | Isolated microchains |
+| **Trust Model** | Platform middleman | Smart contract escrow |
+| **Researcher Control** | Platform decides | Direct verification |
+
 In 2025, cyberattacks move fast — this platform helps you react faster.
 
 ---
@@ -27,8 +39,16 @@ In 2025, cyberattacks move fast — this platform helps you react faster.
 ## Documentation
 See the [Project Overview](./docs/PROJECT_OVERVIEW.md) for a detailed description of the platform’s purpose, architecture, and long-term vision — intended for collaborators, contributors, and potential partners.
 
+---
+
 https://github.com/user-attachments/assets/2e9718c2-692f-493a-9f9d-45b9b2d4a6eb
 
+**For researchers:** Get paid in seconds, not weeks. Keep 100% of your earnings.
+**For projects:** Deploy bug bounties faster than you can tweet. Pay only for verified bugs.
+**For Linera team:** We showcase microchains' killer feature - instant finality for real-time coordination.
+**For investors:** $50B market. Zero-take-rate land grab. Network effects. This is Uniswap for security.
+
+## See It In Action
 [▶️ Full Demo video](https://youtu.be/ytXKSmfHEsM)
 
 ---

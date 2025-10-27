@@ -27,6 +27,16 @@ The Web3 landscape has matured — yet the coordination between **projects** and
 With **Linera’s microchains**, each bounty program gains isolated state, predictable execution, and millisecond-level finality.  
 This makes it finally possible to build a **live, transparent, and trust-minimized** bounty market.
 
+### The Window Is Open
+
+**Market timing is perfect:**
+- Web3 security incidents hit all-time high in 2024
+- Traditional platforms alienating top researchers with delays
+- Linera's mainnet launch creates first-mover advantage
+- Regulatory pressure increasing for transparent processes
+
+**Build now, dominate later.** The first decentralized bounty protocol that actually works will capture the market.
+
 ---
 
 ## 3. Core Idea
