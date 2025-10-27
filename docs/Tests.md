@@ -16,6 +16,7 @@ Complete testing documentation for the Linera Security Bounty Platform. This gui
 8. [CLI Testing](#cli-testing)
 9. [Command Reference](#command-reference)
 10. [Troubleshooting](#troubleshooting)
+11. [Testing Checklist](#testing-checklist)
 
 ---
 
@@ -342,7 +343,6 @@ query {
     remainingPool
     minSeverity
     active
-    creator
   }
 }
 ```
@@ -359,8 +359,20 @@ query {
     status
     payoutAmount
     paid
-    researcher
-    proofOfConcept
+  }
+}
+```
+
+**Get Submissions for Specific Bounty**
+```graphql
+query {
+  bountySubmissions(bountyId: 0) {
+    id
+    title
+    severity
+    status
+    payoutAmount
+    paid
   }
 }
 ```
@@ -369,22 +381,29 @@ query {
 
 ## UI Testing
 
+### Access Web Interface
+
+1. Open browser: `http://localhost:3000`
+2. Ensure GraphQL service is running in Terminal 2
+
 ### TEST 1: Critical Bug - Approved & Claimed
 
-**Step 1: Create Bounty**
-1. Open `http://localhost:3000`
-2. In "Create Bounty Program":
+#### Step 1.1: Create Bounty Program
+1. Locate "Create Bounty Program" section
+2. Fill in:
    - Contract Address: `0xALPHA_CRITICAL_CONTRACT_001`
    - Reward Pool: `10000000000`
-   - Min Severity: **MEDIUM**
-3. Click "Create Bounty" → Bounty ID should be `0`
+   - Min Severity: Select **MEDIUM**
+3. Click "Create Bounty"
+4. Verify Bounty ID 0 created in "Active Bug Bounty Programs" section
 
-**Step 2: Submit Vulnerability**
-1. In "Submit Vulnerability":
+#### Step 1.2: Submit Vulnerability
+1. Scroll to "Submit Vulnerability" section
+2. Fill in:
    - Bounty ID: `0`
    - Title: `Integer Overflow in Token Transfer`
    - Description: `Unchecked arithmetic in transfer function allows attacker to mint unlimited tokens`
-   - Severity: **CRITICAL**
+   - Severity: Select **CRITICAL**
    - Proof of Concept:
      ```
      1. Call transfer() with amount = MAX_UINT64
@@ -392,81 +411,95 @@ query {
      3. Balance wraps to small number
      4. Repeat to drain protocol
      ```
-2. Click "Submit Vulnerability" → Submission ID should be `0`
-3. Check status: **PENDING**
+3. Click "Submit Vulnerability"
+4. Verify Submission ID 0 created with status PENDING in "Vulnerability Submissions" section
 
-**Step 3: Verify Submission**
-1. In "Verify Submission":
+#### Step 1.3: Verify Submission (Admin)
+1. Locate "Verify Submission" section
+2. Fill in:
    - Submission ID: `0`
-   - Approved: **YES**
+   - Approved: Check YES
    - Payout Amount: `5000000000`
-2. Click "Verify Submission"
-3. Check status: **APPROVED**
+3. Click "Verify Submission"
+4. Verify status changed to APPROVED in submissions list
 
-**Step 4: Claim Payout**
-1. In "Claim Payout":
+#### Step 1.4: Claim Payout
+1. Locate "Claim Payout" section
+2. Fill in:
    - Submission ID: `0`
-2. Click "Claim Payout"
-3. Verify: Paid = **true**
+3. Click "Claim Payout"
+4. Verify paid status shows true and bounty remaining pool reduced to 5,000,000,000
 
 ---
 
 ### TEST 2: Medium Bug - Rejected
 
-**Step 1: Create Bounty**
-- Contract Address: `0xBETA_MEDIUM_CONTRACT_002`
-- Reward Pool: `5000000000`
-- Min Severity: **LOW**
-- Bounty ID: `1`
+#### Step 2.1: Create Second Bounty
+1. Contract Address: `0xBETA_MEDIUM_CONTRACT_002`
+2. Reward Pool: `5000000000`
+3. Min Severity: **LOW**
+4. Click "Create Bounty"
+5. Verify Bounty ID 1 created
 
-**Step 2: Submit Vulnerability**
-- Bounty ID: `1`
-- Title: `Missing Input Validation`
-- Description: `Function does not validate user input length, may cause DoS with large inputs`
-- Severity: **MEDIUM**
-- Proof of Concept:
-  ```
-  1. Send input string with 1M characters
-  2. Function consumes excessive gas
-  3. Transaction fails but costs gas
-  ```
-- Submission ID: `1`
+#### Step 2.2: Submit Vulnerability
+1. Bounty ID: `1`
+2. Title: `Missing Input Validation`
+3. Description: `Function does not validate user input length, may cause DoS with large inputs`
+4. Severity: **MEDIUM**
+5. Proof of Concept:
+   ```
+   1. Send input string with 1M characters
+   2. Function consumes excessive gas
+   3. Transaction fails but costs gas
+   ```
+6. Click "Submit Vulnerability"
+7. Verify Submission ID 1 created with status PENDING
 
-**Step 3: Reject Submission**
-- Submission ID: `1`
-- Approved: **NO**
-- Payout Amount: `0`
-- Status: **REJECTED**
+#### Step 2.3: Reject Submission
+1. Submission ID: `1`
+2. Approved: Check NO
+3. Payout Amount: `0`
+4. Click "Verify Submission"
+5. Verify status changed to REJECTED
 
 ---
 
 ### TEST 3: Critical Bug - High Payout
 
-**Step 1: Create Bounty**
-- Contract Address: `0xGAMMA_ENTERPRISE_CONTRACT_003`
-- Reward Pool: `20000000000`
-- Min Severity: **HIGH**
-- Bounty ID: `2`
+#### Step 3.1: Create Premium Bounty
+1. Contract Address: `0xGAMMA_ENTERPRISE_CONTRACT_003`
+2. Reward Pool: `20000000000`
+3. Min Severity: **HIGH**
+4. Click "Create Bounty"
+5. Verify Bounty ID 2 created
 
-**Step 2: Submit Vulnerability**
-- Bounty ID: `2`
-- Title: `Reentrancy Vulnerability in Withdrawal`
-- Description: `Missing CEI pattern allows recursive calls to drain contract balance before state update`
-- Severity: **CRITICAL**
-- Proof of Concept:
-  ```
-  1. Deploy malicious contract with fallback function
-  2. Call withdraw() which sends ETH before updating balance
-  3. Fallback calls withdraw() again
-  4. Repeat until contract drained
-  5. PoC repo: github.com/example/reentrancy-poc
-  ```
-- Submission ID: `2`
+#### Step 3.2: Submit Critical Finding
+1. Bounty ID: `2`
+2. Title: `Reentrancy Vulnerability in Withdrawal`
+3. Description: `Missing CEI pattern allows recursive calls to drain contract balance before state update`
+4. Severity: **CRITICAL**
+5. Proof of Concept:
+   ```
+   1. Deploy malicious contract with fallback function
+   2. Call withdraw() which sends ETH before updating balance
+   3. Fallback calls withdraw() again
+   4. Repeat until contract drained
+   5. PoC repo: github.com/example/reentrancy-poc
+   ```
+6. Click "Submit Vulnerability"
+7. Verify Submission ID 2 created with status PENDING
 
-**Step 3: Approve & Claim**
-- Approve with `15000000000` payout
-- Claim payout
-- Verify: Paid = **true**
+#### Step 3.3: Approve High Payout
+1. Submission ID: `2`
+2. Approved: Check YES
+3. Payout Amount: `15000000000`
+4. Click "Verify Submission"
+5. Verify status changed to APPROVED
+
+#### Step 3.4: Claim High Reward
+1. Submission ID: `2`
+2. Click "Claim Payout"
+3. Verify paid status shows true and bounty remaining pool reduced to 5,000,000,000
 
 ---
 
@@ -475,11 +508,9 @@ query {
 ### Setup
 
 ```bash
-# Extract Chain and App IDs from frontend
-CHAIN_ID=$(grep -o "chains/[a-f0-9]\{64\}" frontend/index.html | cut -d'/' -f2)
-APP_ID=$(grep -o "applications/[a-f0-9]\{64\}" frontend/index.html | cut -d'/' -f2)
-echo "Chain ID: ${CHAIN_ID}"
-echo "App ID: ${APP_ID}"
+# Export Chain and App IDs
+export CHAIN_ID="your_chain_id_here"
+export APP_ID="your_app_id_here"
 ```
 
 ### TEST 1: Critical Bug - Approved & Claimed
@@ -708,7 +739,7 @@ curl -X POST http://localhost:8080/chains/${CHAIN_ID}/applications/${APP_ID} \
 # Get specific bounty
 curl -X POST http://localhost:8080/chains/${CHAIN_ID}/applications/${APP_ID} \
   -H "Content-Type: application/json" \
-  -d '{"query": "{ bounties { id rewardPool } }"}'
+  -d '{"query": "{ bounty(id: 0) { id contractAddress rewardPool remainingPool } }"}'
 
 # Format with jq
 curl -X POST http://localhost:8080/chains/${CHAIN_ID}/applications/${APP_ID} \
@@ -748,6 +779,17 @@ make serve
 # Use exact queries from this guide
 # Check quotes are escaped properly (\")
 ```
+
+### Port Already in Use
+
+```bash
+# Kill process using port 8080
+lsof -ti:8080 | xargs kill -9
+
+# Kill process using port 3000
+lsof -ti:3000 | xargs kill -9
+```
+
 ---
 
 ## Testing Checklist
@@ -762,6 +804,20 @@ make serve
 - [ ] All 3 submissions processed correctly
 - [ ] Total 20B tokens paid out
 - [ ] Remaining pools calculated correctly
+
+---
+
+## Expected Results
+
+After running all tests, verify:
+
+- **3 Bounties created** (IDs: 0, 1, 2)
+- **3 Submissions made** (IDs: 0, 1, 2)
+- **Submission 0:** APPROVED, PAID (5B tokens)
+- **Submission 1:** REJECTED
+- **Submission 2:** APPROVED, PAID (15B tokens)
+- **Total paid:** 20B tokens
+- **Remaining pools:** Bounty 0 (5B), Bounty 1 (5B), Bounty 2 (5B)
 
 ---
 
