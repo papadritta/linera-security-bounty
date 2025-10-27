@@ -211,12 +211,7 @@ export LINERA_STORAGE=rocksdb:/tmp/.tmpXXX/storage
 make check-env
 
 # Build and deploy:
-make build
-make test
-make deploy
-
-# Start GraphQL service (keep running):
-make serve
+make build && make deploy && make serve
 ```
 #### Terminal 3 — frontend
 ```bash
