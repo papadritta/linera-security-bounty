@@ -43,13 +43,12 @@ See the [Project Overview](./docs/PROJECT_OVERVIEW.md) for a detailed descriptio
 
 https://github.com/user-attachments/assets/2e9718c2-692f-493a-9f9d-45b9b2d4a6eb
 
-**For researchers:** Get paid in seconds, not weeks. Keep 100% of your earnings.
-**For projects:** Deploy bug bounties faster than you can tweet. Pay only for verified bugs.
-**For Linera team:** We showcase microchains' killer feature - instant finality for real-time coordination.
-**For investors:** $50B market. Zero-take-rate land grab. Network effects. This is Uniswap for security.
+- **For researchers:** Get paid in seconds, not weeks. Keep 100% of your earnings.
+- **For projects:** Deploy bug bounties faster than you can tweet. Pay only for verified bugs.
+- **For Linera team:** We showcase microchains' killer feature - instant finality for real-time coordination.
+- **For investors:** $50B market. Zero-take-rate land grab. Network effects. This is Uniswap for security.
 
-## See It In Action
-[▶️ Full Demo video](https://youtu.be/ytXKSmfHEsM)
+## See It In Action [▶️ Full Demo video](https://youtu.be/ytXKSmfHEsM)
 
 ---
 
