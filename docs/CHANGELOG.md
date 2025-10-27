@@ -4,11 +4,11 @@ All notable changes to Linera Security Bounty Platform.
 
 ## [Wave 1] - 2024-10-22
 
-### 🎉 Initial Release - MVP
+### Initial Release - MVP
 
 **Buildathon Submission:** Linera Buildathon Wave 1
 
-### ✨ Features
+### Features
 
 #### Core Functionality
 - **Bounty Creation** - Project owners create bug bounty programs
@@ -27,7 +27,7 @@ All notable changes to Linera Security Bounty Platform.
 - **Real-time Updates** - GraphQL subscriptions
 - **Responsive Design** - Works on desktop and mobile
 
-### 🏗️ Architecture
+### Architecture
 
 **Smart Contract (`contract.rs`):**
 - `create_bounty()` - Initialize new bounty program
@@ -44,19 +44,19 @@ All notable changes to Linera Security Bounty Platform.
 - `submissions: MapView<u64, Submission>`
 - Atomic counters and indexes
 
-### 🧪 Testing
+###  Testing
 - ✅ Unit tests for all contract operations
 - ✅ Integration tests for GraphQL API
 - ✅ Clippy linting (zero warnings)
 - ✅ Rustfmt validation
 
-### 📦 Deployment
+### Deployment
 - ✅ Local Linera network deployment
 - ✅ GraphQL service on port 8080
 - ✅ Frontend on port 3000
 - ✅ Automated build scripts
 
-### 📚 Documentation
+### Documentation
 - ✅ Comprehensive README
 - ✅ Architecture diagrams
 - ✅ Usage examples
