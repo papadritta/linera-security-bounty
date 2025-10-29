@@ -859,7 +859,7 @@
 </div>
 
 <script>
-const GRAPHQL_ENDPOINT='http://localhost:8080/chains/bcf817b60755d45d22d0575da8ca56b3ee674d657a9bd1c1885aa4376227aee2/applications/cd5a60f603fa9a361ae0309df9466ef048424f20aa9a4123a3201311f58f1f71';
+const GRAPHQL_ENDPOINT='http://localhost:8080/chains/692789e0d0758db15f6d6cf08a5f0e8fe277d86fda37c6d5c28f70cfd5c64a51/applications/d3fd349634160fb6a9cbf25d53407b1af2e06fb74edb943897527ea54c422bb7';
 let allBounties=[],allSubmissions=[];
 
 function showAlert(msg,type='success'){
@@ -871,6 +871,10 @@ function showAlert(msg,type='success'){
 }
 
 function escapeHtml(t){return t?.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+function escapeGraphQL(str){
+  return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t');
+}
 
 async function graphqlQuery(query){
   try{
@@ -939,7 +943,7 @@ function updateStats(){
 
 document.getElementById('createBountyForm').addEventListener('submit',async(e)=>{
   e.preventDefault();
-  const mutation=`mutation{createBounty(contractAddress:"${document.getElementById('contractAddress').value}",rewardPool:${parseInt(document.getElementById('rewardPool').value)},minSeverity:${document.getElementById('minSeverity').value})}`;
+  const mutation=`mutation{createBounty(contractAddress:"${escapeGraphQL(document.getElementById('contractAddress').value)}",rewardPool:${parseInt(document.getElementById('rewardPool').value)},minSeverity:${document.getElementById('minSeverity').value})}`;
   await graphqlQuery(mutation);
   showAlert('✅ Bounty created successfully!');
   e.target.reset();
@@ -948,7 +952,7 @@ document.getElementById('createBountyForm').addEventListener('submit',async(e)=>
 
 document.getElementById('submitVulnForm').addEventListener('submit',async(e)=>{
   e.preventDefault();
-  const mutation=`mutation{submitVulnerability(bountyId:${parseInt(document.getElementById('bountyId').value)},title:"${escapeHtml(document.getElementById('vulnTitle').value)}",description:"${escapeHtml(document.getElementById('vulnDescription').value)}",severity:${document.getElementById('vulnSeverity').value},proofOfConcept:"${escapeHtml(document.getElementById('proofOfConcept').value)}")}`;
+  const mutation=`mutation{submitVulnerability(bountyId:${parseInt(document.getElementById('bountyId').value)},title:"${escapeGraphQL(document.getElementById('vulnTitle').value)}",description:"${escapeGraphQL(document.getElementById('vulnDescription').value)}",severity:${document.getElementById('vulnSeverity').value},proofOfConcept:"${escapeGraphQL(document.getElementById('proofOfConcept').value)}")}`;
   await graphqlQuery(mutation);
   showAlert('✅ Vulnerability submitted successfully!');
   e.target.reset();
