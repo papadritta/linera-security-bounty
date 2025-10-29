@@ -805,6 +805,14 @@
     </form>
   </div>
 
+  <div class="card user-only">
+    <h2><i class="fa-solid fa-hand-holding-dollar"></i> Claim Payout</h2>
+    <form id="claimPayoutForm">
+      <div class="form-group"><label>Submission ID</label><input type="number" id="claimSubmissionId" placeholder="0" required></div>
+      <button class="btn">Claim Payout</button>
+    </form>
+  </div>
+
   <h2 class="section-title" id="bounties"><i class="fa-solid fa-list"></i> Active Bug Bounty Programs</h2>
   <div class="grid" id="bountyList"></div>
 
@@ -966,6 +974,15 @@ document.getElementById('verifyForm').addEventListener('submit',async(e)=>{
   showAlert('✅ Submission verified!');
   e.target.reset();
   setTimeout(loadSubmissions,1000);
+});
+
+document.getElementById('claimPayoutForm').addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const mutation=`mutation{claimPayout(submissionId:${parseInt(document.getElementById('claimSubmissionId').value)})}`;
+  await graphqlQuery(mutation);
+  showAlert('✅ Payout claimed successfully!');
+  e.target.reset();
+  setTimeout(()=>{loadBounties();loadSubmissions()},1000);
 });
 
 document.getElementById('subscribeForm').addEventListener('submit',async(e)=>{
