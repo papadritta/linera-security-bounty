@@ -766,6 +766,14 @@
   </div>
 </div>
 
+<!-- Performance Monitor -->
+<div style="position:fixed;bottom:20px;right:20px;background:rgba(10,31,39,0.95);border:1px solid var(--border);border-radius:15px;padding:20px;backdrop-filter:blur(20px);z-index:1000;min-width:300px">
+  <h3 style="color:var(--primary);font-size:0.9em;margin-bottom:15px;display:flex;align-items:center;gap:8px">
+    <i class="fa-solid fa-bolt"></i> Performance Monitor
+  </h3>
+  <div id="perfLog" style="max-height:300px;overflow-y:auto;font-family:'JetBrains Mono',monospace;font-size:0.75em"></div>
+</div>
+
 <div class="container">
   <div id="alerts"></div>
 
@@ -867,7 +875,7 @@
 </div>
 
 <script>
-const GRAPHQL_ENDPOINT='http://localhost:8080/chains/692789e0d0758db15f6d6cf08a5f0e8fe277d86fda37c6d5c28f70cfd5c64a51/applications/d3fd349634160fb6a9cbf25d53407b1af2e06fb74edb943897527ea54c422bb7';
+const GRAPHQL_ENDPOINT='http://localhost:8080/chains/89014e21e70dbc913fc8c48d4a2b3779f41ed821e43d5d92e219c5bb98f89d66/applications/1f6e54a89bd7608f646d223033e79081ce99dfbff732b6e3efb1c97db2c56511';
 let allBounties=[],allSubmissions=[];
 
 function showAlert(msg,type='success'){
@@ -884,13 +892,69 @@ function escapeGraphQL(str){
   return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t');
 }
 
+function logPerformance(query, duration, status){
+  const perfLog = document.getElementById('perfLog');
+  if(!perfLog) return;
+  
+  const timestamp = new Date().toLocaleTimeString('en-US', {hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'});
+  const milliseconds = new Date().getMilliseconds().toString().padStart(3, '0');
+  
+  // Extract operation name
+  let operation = 'query';
+  if(query.includes('mutation')){
+    operation = query.match(/mutation\{(\w+)/)?.[1] || 'mutation';
+  } else if(query.includes('bounties') || query.includes('submissions')){
+    operation = query.match(/\{(\w+)/)?.[1] || 'query';
+  }
+  
+  const statusColor = status === 'success' ? '#51cf66' : '#DE2A02';
+  const statusIcon = status === 'success' ? '✓' : '✗';
+  
+  const logEntry = document.createElement('div');
+  logEntry.style.cssText = `
+    padding:8px;
+    margin-bottom:8px;
+    background:rgba(255,255,255,0.03);
+    border-left:3px solid ${statusColor};
+    border-radius:5px;
+    animation:slideIn 0.3s ease;
+  `;
+  
+  logEntry.innerHTML = `
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+      <span style="color:var(--primary);font-weight:600">${operation}</span>
+      <span style="color:${statusColor};font-weight:700">${statusIcon} ${duration}ms</span>
+    </div>
+    <div style="color:var(--text-muted);font-size:0.85em">${timestamp}.${milliseconds}</div>
+  `;
+  
+  perfLog.insertBefore(logEntry, perfLog.firstChild);
+  
+  // Keep only last 3 entries
+  while(perfLog.children.length > 3){
+    perfLog.removeChild(perfLog.lastChild);
+  }
+}
+
 async function graphqlQuery(query){
+  const startTime = performance.now();
   try{
     const res=await fetch(GRAPHQL_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({query})});
     const result=await res.json();
+    const endTime = performance.now();
+    const duration = (endTime - startTime).toFixed(4);
+    
+    logPerformance(query, duration, result.errors ? 'error' : 'success');
+    
     if(result.errors){showAlert(result.errors[0].message,'error');throw new Error(result.errors[0].message)}
     return result.data;
-  }catch(e){showAlert(e.message,'error');throw e}
+  }catch(e){
+    const endTime = performance.now();
+    const duration = (endTime - startTime).toFixed(4);
+    logPerformance(query, duration, 'error');
+    showAlert(e.message,'error');
+    throw e;
+  }
 }
 
 async function loadBounties(){
