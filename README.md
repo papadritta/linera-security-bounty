@@ -190,7 +190,7 @@ git clone https://github.com/papadritta/linera-security-bounty.git
 cd linera-security-bounty
 ```
 
-### Running it
+### Running it [▶️ Demo video](https://youtu.be/E7QBFVPIwT0)
 > The workflow uses three terminals running in parallel. 
 > Each terminal performs a separate role: network, deployment, and frontend.
 
