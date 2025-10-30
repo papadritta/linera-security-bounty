@@ -469,3 +469,4 @@ MIT License © 2025 - see [LICENSE](LICENSE)
 **Built with ❤️ for Linera Buildathon Wave 1**
 
 <img width="1128" height="191" alt="OG_github-2" src="https://github.com/user-attachments/assets/2b17ad32-9414-45fb-8407-2b47c5c65609" />
+
