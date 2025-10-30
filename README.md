@@ -2,7 +2,6 @@
 > A next-generation decentralized bug bounty platform built for instant trust and transparency.
 <img width="1128" height="191" alt="OG_github" src="https://github.com/user-attachments/assets/78585cde-4bb1-4194-8221-071d4485648a" />
 
-[![CI](https://github.com/papadritta/linera-security-bounty/actions/workflows/ci.yml/badge.svg)](https://github.com/papadritta/linera-security-bounty/actions/workflows/ci.yml)
 [![Security Audit](https://img.shields.io/badge/security-audited-brightgreen.svg)](./docs/SECURITY.md)
 [![Linera Buildathon](https://img.shields.io/badge/Linera-Buildathon%20Wave%201-blue)](https://linera.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
