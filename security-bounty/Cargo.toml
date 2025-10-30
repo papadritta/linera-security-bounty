@@ -17,9 +17,9 @@ linera-sdk = { git = "https://github.com/linera-io/linera-protocol.git", branch 
 ] }
 tokio = { version = "1.40", features = ["rt", "sync"] }
 
-# This overrides the git dependency with local path when developing
-[patch.'https://github.com/linera-io/linera-protocol.git']
-linera-sdk = { path = "../../linera-protocol/linera-sdk" }
+# Uncomment these lines ONLY when developing locally:
+# [patch.'https://github.com/linera-io/linera-protocol.git']
+# linera-sdk = { path = "../../linera-protocol/linera-sdk" }
 
 [[bin]]
 name = "security_bounty_contract"
