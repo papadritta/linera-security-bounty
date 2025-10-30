@@ -11,7 +11,7 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0" }
 
 [dev-dependencies]
-linera-sdk = { path = "../../linera-protocol/linera-sdk", features = [
+linera-sdk = { git = "https://github.com/linera-io/linera-protocol.git", tag = "v0.16.0", features = [
     "test",
     "wasmer",
 ] }
