@@ -5,13 +5,13 @@ edition = "2021"
 
 [dependencies]
 async-graphql = { version = "=7.0.17", default-features = false }
-linera-sdk = { git = "https://github.com/linera-io/linera-protocol.git", branch = "main" }
+linera-sdk = { git = "https://github.com/linera-io/linera-protocol.git", rev = "b0f2824" }
 futures = { version = "0.3" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0" }
 
 [dev-dependencies]
-linera-sdk = { git = "https://github.com/linera-io/linera-protocol.git", branch = "main", features = [
+linera-sdk = { git = "https://github.com/linera-io/linera-protocol.git", rev = "b0f2824", features = [
     "test",
     "wasmer",
 ] }
