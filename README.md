@@ -180,8 +180,11 @@ See [`state.rs`](./security-bounty/src/state.rs) for storage layout and [`servic
 # Install Rust 1.85+ (if you don't have it)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Install Linera CLI
-cargo install linera-service --git https://github.com/linera-io/linera-protocol.git --tag v0.16.0
+# Install Linera CLI (linera v0.16.0)
+git clone https://github.com/linera-io/linera-protocol.git
+cd linera-protocol
+git checkout a67d5457a8
+cargo install --path linera-service
 
 # Add WASM support
 rustup target add wasm32-unknown-unknown
