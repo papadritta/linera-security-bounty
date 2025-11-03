@@ -384,29 +384,29 @@ make build
 ## What’s next — Roadmap
 
 ### Current version (Wave 1):
-- ✅ **Bounty creation with reward pools**
-- ✅ **Vulnerability submission system**
-- ✅ **Manual verification workflow**
-- ✅ **Payout claiming mechanism**
-- ✅ **GraphQL API with full CRUD**
-- ✅ **Web-based frontend interface**
-- ✅ **Real-time updates via Linera microchains**
+- **Bounty creation with reward pools**
+- **Vulnerability submission system**
+- **Manual verification workflow**
+- **Payout claiming mechanism**
+- **GraphQL API with full CRUD**
+- **Web-based frontend interface**
+- **Real-time updates via Linera microchains**
 
 ### Next iteration (Wave 2):
-- 🔄 **Enhanced UI/UX:** better filtering, search, and dashboards
-- 🔄 **Notification system:** webhook integration for status updates
-- 🔄 **Submission analytics:** stats and reporting dashboard
-- 🔄 **Public testnet deployment:** wider community testing
+- **Enhanced UI/UX:** better filtering, search, and dashboards
+- **Notification system:** webhook integration for status updates
+- **Submission analytics:** stats and reporting dashboard
+- **Public testnet deployment:** wider community testing
 
 ### Future enhancements:
-- 💭 **Reputation System:** Track researcher credibility and history
-- 💭 **Multi-token Support:** ERC-20 and custom token rewards
-- 💭 **Dispute Resolution:** Community-driven arbitration
-- 💭 **Private Programs:** Confidential vulnerability disclosure
-- 💭 **TEE Oracle Integration:** Automated PoC verification
-- 💭 **Multi-chain Support:** Cross-chain bounty programs
-- 💭 **AI Classification:** ML-assisted severity scoring
-- 💭 **DAO Governance:** Decentralized platform rules
+- **Reputation System:** Track researcher credibility and history
+- **Multi-token Support:** ERC-20 and custom token rewards
+- **Dispute Resolution:** Community-driven arbitration
+- **Private Programs:** Confidential vulnerability disclosure
+- **TEE Oracle Integration:** Automated PoC verification
+- **Multi-chain Support:** Cross-chain bounty programs
+- **AI Classification:** ML-assisted severity scoring
+- **DAO Governance:** Decentralized platform rules
 
 ---
 
@@ -468,6 +468,6 @@ MIT License © 2025 - see [LICENSE](LICENSE)
 - Discussions: [GitHub Discussions](https://github.com/papadritta/linera-security-bounty/discussions)
 
 ---
-**Built with ❤️ for Linera Buildathon Wave 1**
+**Built for Linera Buildathon Wave 1**
 
 <img width="1128" height="191" alt="OG_github-2" src="https://github.com/user-attachments/assets/2b17ad32-9414-45fb-8407-2b47c5c65609" />

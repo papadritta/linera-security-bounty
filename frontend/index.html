@@ -778,7 +778,7 @@
   <div id="alerts"></div>
 
   <div class="search-bar">
-    <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search bounties by contract address...">
+    <input type="text" class="search-input" id="searchInput" placeholder="Search bounties by contract address...">
     <div class="filter-group">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="active">Active</button>
@@ -829,7 +829,7 @@
     <form id="verifyForm">
       <div class="form-group"><label>Submission ID</label><input type="number" id="submissionId" required></div>
       <div class="form-group"><label>Decision</label>
-        <select id="approved"><option value="true">✅ Approve</option><option value="false">❌ Reject</option></select>
+        <select id="approved"><option value="true">Approve</option><option value="false">Reject</option></select>
       </div>
       <div class="form-group"><label>Payout Amount (tokens)</label><input type="number" id="payoutAmount" required></div>
       <button class="btn">Verify Submission</button>
@@ -908,7 +908,7 @@ function logPerformance(query, duration, status){
   }
   
   const statusColor = status === 'success' ? '#51cf66' : '#DE2A02';
-  const statusIcon = status === 'success' ? '✓' : '✗';
+  const statusIcon = status === 'success' ? 'OK' : 'ERR';
   
   const logEntry = document.createElement('div');
   logEntry.style.cssText = `
@@ -973,7 +973,7 @@ function renderBounties(bounties){
         <div class="bounty-id">Bounty #${b.id}</div>
         <div class="bounty-status status-${b.active?'active':'closed'}">${b.active?'ACTIVE':'CLOSED'}</div>
       </div>
-      <div class="bounty-contract">📝 ${escapeHtml(b.contractAddress)}</div>
+      <div class="bounty-contract">${escapeHtml(b.contractAddress)}</div>
       <div class="bounty-amount">
         <div><div class="amount-label">Maximum Bounty</div><div class="amount-value">$${b.rewardPool.toLocaleString()}</div></div>
         <div style="text-align:right"><div class="amount-label">Remaining</div><div style="color:#8D96FF;font-size:1.2em;font-weight:700">$${b.remainingPool.toLocaleString()}</div></div>
@@ -1001,7 +1001,7 @@ async function loadSubmissions(){
       <div class="submission-meta">Submission #${s.id} • Bounty #${s.bountyId} • ${s.hunter}</div>
       <div style="display:flex;gap:10px;align-items:center">
         <span class="tag tag-${s.severity.toLowerCase()}">${s.severity}</span>
-        ${s.payoutAmount>0?`<span style="color:#51cf66;font-weight:700">💰 $${s.payoutAmount.toLocaleString()} ${s.paid?'✅ Paid':''}</span>`:''}
+        ${s.payoutAmount>0?`<span style="color:#51cf66;font-weight:700">$${s.payoutAmount.toLocaleString()} ${s.paid?'[Paid]':''}</span>`:''}
       </div>
     </div>
   `).join('');
@@ -1017,7 +1017,7 @@ document.getElementById('createBountyForm').addEventListener('submit',async(e)=>
   e.preventDefault();
   const mutation=`mutation{createBounty(contractAddress:"${escapeGraphQL(document.getElementById('contractAddress').value)}",rewardPool:${parseInt(document.getElementById('rewardPool').value)},minSeverity:${document.getElementById('minSeverity').value})}`;
   await graphqlQuery(mutation);
-  showAlert('✅ Bounty created successfully!');
+  showAlert('Bounty created successfully!');
   e.target.reset();
   setTimeout(loadBounties,1000);
 });
@@ -1026,7 +1026,7 @@ document.getElementById('submitVulnForm').addEventListener('submit',async(e)=>{
   e.preventDefault();
   const mutation=`mutation{submitVulnerability(bountyId:${parseInt(document.getElementById('bountyId').value)},title:"${escapeGraphQL(document.getElementById('vulnTitle').value)}",description:"${escapeGraphQL(document.getElementById('vulnDescription').value)}",severity:${document.getElementById('vulnSeverity').value},proofOfConcept:"${escapeGraphQL(document.getElementById('proofOfConcept').value)}")}`;
   await graphqlQuery(mutation);
-  showAlert('✅ Vulnerability submitted successfully!');
+  showAlert('Vulnerability submitted successfully!');
   e.target.reset();
   setTimeout(loadSubmissions,1000);
 });
@@ -1035,7 +1035,7 @@ document.getElementById('verifyForm').addEventListener('submit',async(e)=>{
   e.preventDefault();
   const mutation=`mutation{verifySubmission(submissionId:${parseInt(document.getElementById('submissionId').value)},approved:${document.getElementById('approved').value},payoutAmount:${parseInt(document.getElementById('payoutAmount').value)})}`;
   await graphqlQuery(mutation);
-  showAlert('✅ Submission verified!');
+  showAlert('Submission verified!');
   e.target.reset();
   setTimeout(loadSubmissions,1000);
 });
@@ -1044,7 +1044,7 @@ document.getElementById('claimPayoutForm').addEventListener('submit',async(e)=>{
   e.preventDefault();
   const mutation=`mutation{claimPayout(submissionId:${parseInt(document.getElementById('claimSubmissionId').value)})}`;
   await graphqlQuery(mutation);
-  showAlert('✅ Payout claimed successfully!');
+  showAlert('Payout claimed successfully!');
   e.target.reset();
   setTimeout(()=>{loadBounties();loadSubmissions()},1000);
 });
@@ -1053,7 +1053,7 @@ document.getElementById('subscribeForm').addEventListener('submit',async(e)=>{
   e.preventDefault();
   const email=document.getElementById('emailSubscribe').value;
   localStorage.setItem('subscribedEmail',email);
-  showAlert('✅ Subscribed! You\'ll receive updates about new bounties');
+  showAlert('Subscribed! You\'ll receive updates about new bounties');
   e.target.reset();
 });
 

@@ -49,27 +49,27 @@ help:
 build:
 	@echo "Building your app..."
 	@cd security-bounty && cargo build --release --target wasm32-unknown-unknown
-	@echo "Done! ✓"
+	@echo "Done!"
 
 test:
 	@echo "Running tests..."
 	@cd security-bounty && cargo test
-	@echo "All tests passed! ✓"
+	@echo "All tests passed!"
 
 lint:
 	@echo "Checking code quality..."
 	@cd security-bounty && cargo clippy --all-targets --all-features -- -D warnings
-	@echo "Looking good! ✓"
+	@echo "Looking good!"
 
 format:
 	@echo "Checking code style..."
 	@cd security-bounty && cargo fmt --all -- --check
-	@echo "Code looks great! ✓"
+	@echo "Code looks great!"
 
 format-fix:
 	@echo "Fixing code style..."
 	@cd security-bounty && cargo fmt --all
-	@echo "Fixed! ✓"
+	@echo "Fixed!"
 
 check-all: test lint format
 	@echo ""
@@ -81,12 +81,12 @@ clean:
 	@echo "Cleaning up..."
 	@cd security-bounty && cargo clean
 	@rm -rf .linera/ || true
-	@echo "All clean! ✓"
+	@echo "All clean!"
 
 network-up:
 	@echo "Starting local network in BLOCKING mode..."
 	@echo ""
-	@echo "⚠️  IMPORTANT: This command will block this terminal!"
+	@echo "IMPORTANT: This command will block this terminal!"
 	@echo "The network MUST keep running."
 	@echo ""
 	@echo "After starting, you'll see 3 export commands."
@@ -102,12 +102,12 @@ network-up:
 network-down:
 	@echo "Stopping network..."
 	@linera net down || true
-	@echo "Network stopped ✓"
+	@echo "Network stopped"
 
 network-status:
 	@echo "Checking network..."
 	@if pgrep -f "linera-proxy" > /dev/null; then \
-		echo "Network is running ✓"; \
+		echo "Network is running"; \
 	else \
 		echo "Network is NOT running"; \
 		echo "Start it with: make network-up"; \
@@ -117,17 +117,17 @@ check-env:
 	@echo "Checking environment variables..."
 	@if [ -z "$$LINERA_WALLET" ]; then \
 		echo ""; \
-		echo "❌ LINERA_WALLET - NOT SET"; \
-		echo "❌ LINERA_KEYSTORE - NOT SET"; \
-		echo "❌ LINERA_STORAGE - NOT SET"; \
+		echo "LINERA_WALLET - NOT SET"; \
+		echo "LINERA_KEYSTORE - NOT SET"; \
+		echo "LINERA_STORAGE - NOT SET"; \
 		echo ""; \
 		echo "You need to export these variables!"; \
 		echo "Run 'make network-up' and copy the export commands."; \
 	else \
 		echo ""; \
-		echo "✓ LINERA_WALLET - $$LINERA_WALLET"; \
-		echo "✓ LINERA_KEYSTORE - $$LINERA_KEYSTORE"; \
-		echo "✓ LINERA_STORAGE - $$LINERA_STORAGE"; \
+		echo "LINERA_WALLET - $$LINERA_WALLET"; \
+		echo "LINERA_KEYSTORE - $$LINERA_KEYSTORE"; \
+		echo "LINERA_STORAGE - $$LINERA_STORAGE"; \
 		echo ""; \
 		echo "All set! You can run 'make deploy' now."; \
 	fi

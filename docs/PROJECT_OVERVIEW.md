@@ -108,37 +108,37 @@ This is not just another dApp — it’s a real-time, on-chain coordination laye
 ### Wave 1 — Core Release (Current)
 > Foundation and functional prototype
 
-- ✅ Bounty creation with reward pools  
-- ✅ Vulnerability submission system  
-- ✅ Manual verification workflow  
-- ✅ Payout claiming mechanism  
-- ✅ GraphQL API with full CRUD  
-- ✅ Web-based frontend interface  
-- ✅ Real-time updates via Linera microchains  
+- Bounty creation with reward pools
+- Vulnerability submission system
+- Manual verification workflow
+- Payout claiming mechanism
+- GraphQL API with full CRUD
+- Web-based frontend interface
+- Real-time updates via Linera microchains  
 
 ---
 
 ### Wave 2 — Developer Testnet (Next)
 > Expanding usability and opening for public testing
 
-- 🔄 Enhanced UI/UX — improved filtering, search, and dashboards  
-- 🔄 Notification system — webhook integration for status updates  
-- 🔄 Submission analytics — reporting dashboard and metrics  
-- 🔄 Public testnet deployment — open community access  
-- 🔄 Documentation and CLI tools refinement  
-- 🔄 Initial audit and bug-fix cycle  
+- Enhanced UI/UX — improved filtering, search, and dashboards
+- Notification system — webhook integration for status updates
+- Submission analytics — reporting dashboard and metrics
+- Public testnet deployment — open community access
+- Documentation and CLI tools refinement
+- Initial audit and bug-fix cycle  
 
 ---
 
 ### Future Plans
 > Building toward a full decentralized security protocol
 
-- 💭 Researcher reputation and credibility tracking  
-- 💭 Multi-token support — ERC-20 and custom token rewards  
-- 💭 Private or invite-only bounty programs  
-- 💭 Automated PoC verification (prototype)  
-- 💭 AI-assisted severity scoring  
-- 💭 DAO governance and multi-chain integration
+- Researcher reputation and credibility tracking
+- Multi-token support — ERC-20 and custom token rewards
+- Private or invite-only bounty programs
+- Automated PoC verification (prototype)
+- AI-assisted severity scoring
+- DAO governance and multi-chain integration
 
 
 ---
@@ -153,8 +153,7 @@ We welcome:
 - **Projects** aiming to host decentralized bounty programs  
 - **Investors or partners** supporting the next phase of decentralized security infrastructure  
 
-To contribute, open a [pull request](../README.md#contributing) or join the discussion on  
-👉 [GitHub Discussions](https://github.com/papadritta/linera-security-bounty/discussions)
+To contribute, open a [pull request](../README.md#contributing) or join the discussion on [GitHub Discussions](https://github.com/papadritta/linera-security-bounty/discussions)
 
 ---
 
@@ -168,4 +167,4 @@ and every reward is executed without delay or middlemen.
 > Linera Security Bounty aims to make it trustless, instant, and open to all.
 
 ---
-**Built with ❤️ and Rust — for a safer decentralized future.**
+**Built with Rust — for a safer decentralized future.**

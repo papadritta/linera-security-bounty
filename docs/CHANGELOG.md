@@ -45,53 +45,53 @@ All notable changes to Linera Security Bounty Platform.
 - Atomic counters and indexes
 
 ###  Testing
-- ✅ Unit tests for all contract operations
-- ✅ Integration tests for GraphQL API
-- ✅ Clippy linting (zero warnings)
-- ✅ Rustfmt validation
+- Unit tests for all contract operations
+- Integration tests for GraphQL API
+- Clippy linting (zero warnings)
+- Rustfmt validation
 
 ### Deployment
-- ✅ Local Linera network deployment
-- ✅ GraphQL service on port 8080
-- ✅ Frontend on port 3000
-- ✅ Automated build scripts
+- Local Linera network deployment
+- GraphQL service on port 8080
+- Frontend on port 3000
+- Automated build scripts
 
 ### Documentation
-- ✅ Comprehensive README
-- ✅ Architecture diagrams
-- ✅ Usage examples
-- ✅ Deployment guide
+- Comprehensive README
+- Architecture diagrams
+- Usage examples
+- Deployment guide
 
-### 🎯 Achievements
+### Achievements
 - **Working Demo** - Fully functional MVP
 - **Clean Code** - Zero clippy warnings
 - **Test Coverage** - All critical paths tested
 - **Professional Docs** - Production-ready documentation
 
 ### Current version (Wave 1):
-- ✅ **Bounty creation with reward pools**
-- ✅ **Vulnerability submission system**
-- ✅ **Manual verification workflow**
-- ✅ **Payout claiming mechanism**
-- ✅ **GraphQL API with full CRUD**
-- ✅ **Web-based frontend interface**
-- ✅ **Real-time updates via Linera microchains**
+- **Bounty creation with reward pools**
+- **Vulnerability submission system**
+- **Manual verification workflow**
+- **Payout claiming mechanism**
+- **GraphQL API with full CRUD**
+- **Web-based frontend interface**
+- **Real-time updates via Linera microchains**
 
 ### Next Iteration (Wave 2):
-- 🔄 **Enhanced UI/UX** - Better filtering, search, and dashboards
-- 🔄 **Notification System** - Webhook integration for status updates
-- 🔄 **Submission Analytics** - Stats and reporting dashboard
-- 🔄 **Public Testnet Deployment** - Wider community testing
+- **Enhanced UI/UX** - Better filtering, search, and dashboards
+- **Notification System** - Webhook integration for status updates
+- **Submission Analytics** - Stats and reporting dashboard
+- **Public Testnet Deployment** - Wider community testing
 
 ### Way to grow (Future Enhancements):
-- 💭 **Reputation System** - Track researcher credibility and history
-- 💭 **Multi-token Support** - ERC-20 and custom token rewards
-- 💭 **Dispute Resolution** - Community-driven arbitration
-- 💭 **Private Programs** - Confidential vulnerability disclosure
-- 💭 **TEE Oracle Integration** - Automated PoC verification
-- 💭 **Multi-chain Support** - Cross-chain bounty programs
-- 💭 **AI Classification** - ML-assisted severity scoring
-- 💭 **DAO Governance** - Decentralized platform rules
+- **Reputation System** - Track researcher credibility and history
+- **Multi-token Support** - ERC-20 and custom token rewards
+- **Dispute Resolution** - Community-driven arbitration
+- **Private Programs** - Confidential vulnerability disclosure
+- **TEE Oracle Integration** - Automated PoC verification
+- **Multi-chain Support** - Cross-chain bounty programs
+- **AI Classification** - ML-assisted severity scoring
+- **DAO Governance** - Decentralized platform rules
 
 ---
 
